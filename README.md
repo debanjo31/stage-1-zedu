@@ -6,7 +6,7 @@ A focused to-do list with notes, priorities, categories, due dates, filtering, a
 
 ```bash
 cp .env.example .env
-docker compose up --build
+docker compose -f docker-compose.yml -f docker-compose.local.yml up --build
 ```
 
 Open <http://localhost:3000>. The API documentation is available at <http://localhost:8000/docs> during local deployment.
@@ -35,4 +35,6 @@ Set `DATABASE_URL` when running the backend outside Compose. Set `VITE_API_URL` 
 
 ## Dokploy
 
-Create a Compose application from this repository, copy the variables from `.env.example` into Dokploy's environment settings, and replace every example password. Expose the `frontend` service on port `80` through your domain. The included Nginx configuration routes `/api` to the private backend service. MySQL data is persisted in the named `mysql_data` volume.
+Create a Compose application from this repository using `./docker-compose.yml`, copy the variables from `.env.example` into Dokploy's environment settings, and replace every example password. Add a Dokploy domain for the `frontend` service with container port `80`; no host ports need to be reserved. The included Nginx configuration routes `/api` to the private backend service. MySQL data is persisted in the named `mysql_data` volume.
+
+`docker-compose.local.yml` is only for local development and restores the localhost port mappings. Do not add it to the Dokploy Compose path.
