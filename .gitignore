@@ -1,4 +1,3 @@
-.env
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -13,7 +12,7 @@ dist/
 *.tsbuildinfo
 .DS_Store
 .idea/
-.vscode/
 mysql_data/
 /frontend/vite.config.js
 /frontend/vite.config.d.ts
+config.bat
